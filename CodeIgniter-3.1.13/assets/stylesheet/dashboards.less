@@ -1,0 +1,158 @@
+@color-primary: black;
+@color-secondary: #2B78E4;
+@color-tertiary: white;
+@color-gray: #CCCCCC;
+@color-light-gray: #EEEEEE;
+@color-green: #009e0f;
+@color-danger: #cf2a27;
+@color-neutral: #9c9c9c;
+
+@table-header-color: @color-gray;
+@table-row-color: @color-light-gray;
+
+@shadow-effect-color: rgba(0, 0, 0, .2);
+@padding-dimension: 20px;
+@margin-dimension: 20px;
+@border-radius-dimension: 5px;
+.mixin-card-effect {
+    box-shadow: 0 4px 8px 0 @shadow-effect-color;
+    border-radius: @border-radius-dimension;
+}
+.mixin-input(@height, @margin-left, @margin-right, @background-color) {
+    width: 85px;
+    height: @height;
+    margin: 10px;
+    margin-left: @margin-left;
+    margin-right: @margin-right;
+    background-color: @background-color;
+    color: @color-tertiary;
+    border-radius: @border-radius-dimension;
+    border: unset;
+} 
+
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: @color-light-gray;
+    position: relative;
+    nav { 
+        .mixin-card-effect();
+        border-radius: unset;
+        position: relative;
+        padding-left: @padding-dimension;
+        background-color: @color-tertiary;
+        h1 {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        a {
+            position: absolute;
+            top: 30px;
+            right: @padding-dimension;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: @color-primary;
+            &.link-highlight {
+                color: @color-secondary;
+            }
+            &#dashboard, &#profile {
+                position: unset;
+                margin: 0 15px;
+            }
+        }
+    }
+    div {
+        width: 800px;
+        padding: 5px @padding-dimension @padding-dimension @padding-dimension;
+        margin: 0 auto;
+        margin-top: @margin-dimension;
+        .mixin-card-effect();
+        background-color: @color-tertiary;
+        position: relative;
+        a.button-link {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: @color-secondary;
+            border-radius: @border-radius-dimension;
+            color: @color-tertiary;
+            position: absolute;
+            right: 0;
+            top: 25px;
+            right: @padding-dimension;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border: 2px solid @color-primary;
+            border-collapse: collapse;
+            text-align: left;
+            thead {
+                background-color: @table-header-color;
+                td {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+            td {
+                border-right: 2px solid @color-primary;
+                padding: 10px 40px 10px 5px;
+                input[type="submit"] {
+                    .mixin-input(35px, 5px, 5px, @color-danger);    
+                }
+            }
+            td.actions {
+                text-align: center;
+                padding: 0;
+            }
+            tr.row-color {
+                background-color: @table-row-color;
+            }
+        }
+    }
+    div#modal-remove {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+        background-color: rgba(0, 0, 0, .4);
+        div.modal-content {
+            width: 32%;
+            h1 {
+                display: inline-block;
+            }
+            span.close {
+                display: inline-block;
+                position: absolute;
+                right: @margin-dimension;
+                top: 28px;
+                color: @color-neutral;
+                font-size: 28px;
+                &:hover, &:focus {
+                    color: @color-primary;
+                    cursor: pointer;
+                }
+            }
+            p {
+                span {
+                    font-weight: bold;
+                    color: @color-primary;
+                }
+            }
+            input {
+                .mixin-input(40px, 3px, 3px, @color-neutral);
+                margin-left: 55%; 
+            }
+            form {
+                display: inline-block;
+                input {
+                    .mixin-input(40px, 3px, 3px, @color-danger);
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

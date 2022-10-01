@@ -1,0 +1,85 @@
+@color-primary: black;
+@color-secondary: #2B78E4;
+@color-tertiary: white;
+@color-gray: #CCCCCC;
+@color-light-gray: #EEEEEE;
+@color-danger: #cf2a27;
+
+@background-color-input: rgb(247, 247, 247);
+
+@shadow-effect-color: rgba(0, 0, 0, .2);
+@padding-dimension: 20px;
+@margin-dimension: 20px;
+@border-radius-dimension: 5px;
+.mixin-card-effect {
+    box-shadow: 0 4px 8px 0 @shadow-effect-color;
+    border-radius: @border-radius-dimension;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: @color-light-gray;
+    nav { 
+        .mixin-card-effect();
+        border-radius: unset;
+        position: relative;
+        padding-left: @padding-dimension;
+        background-color: @color-tertiary;
+        h1 {
+            display: inline-block;
+        }
+        a {
+            position: absolute;
+            top: 30px;
+            right: @padding-dimension;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+    form {
+        width: 250px;
+        padding: 5px @padding-dimension 10px @padding-dimension;
+        margin: 0 auto;
+        margin-top: 40px;
+        text-align: center;
+        .mixin-card-effect();
+        background-color: @color-tertiary;       
+        .fail {
+            border: 1px solid @color-danger;
+        }
+        .pass {
+            border: 1px solid @color-gray;
+        }
+        input {
+            display: block;
+            width: 95%;
+            height: 30px;
+            margin-top: 15px;
+            padding-left: 10px;
+            border-radius: @border-radius-dimension;
+            border-color: @color-gray;
+            border: 1px solid @color-gray;
+            background-color: @background-color-input;
+        }
+        p.error {
+            margin-top: 3px;
+            color: @color-danger;
+            font-size: 14px;
+            text-align: left;
+        }
+        input[type="submit"] {
+            width: 100%;
+            height: 40px;
+            padding: 0;
+            background-color: @color-secondary;
+            color: @color-tertiary;
+            border-radius: @border-radius-dimension;
+        }
+        a {
+            margin-top: @margin-dimension;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+}

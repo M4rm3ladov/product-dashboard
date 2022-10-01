@@ -1,0 +1,156 @@
+@color-primary: black;
+@color-secondary: #2B78E4;
+@color-tertiary: white;
+@color-gray: #CCCCCC;
+@color-light-gray: #EEEEEE;
+@color-green: #009e0f;
+@color-danger: #cf2a27;
+
+@background-color-input: rgb(247, 247, 247);
+
+@shadow-effect-color: rgba(0, 0, 0, .2);
+@padding-dimension: 20px;
+@margin-dimension: 20px;
+@border-radius-dimension: 5px;
+.mixin-card-effect {
+    box-shadow: 0 4px 8px 0 @shadow-effect-color;
+    border-radius: @border-radius-dimension;
+}
+.mixin-border-input{
+    border-radius: @border-radius-dimension;
+    border-color: @color-gray;
+    border: 1px solid @color-gray;
+    background-color: @background-color-input;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: @color-light-gray;
+    nav { 
+        .mixin-card-effect();
+        border-radius: unset;
+        position: relative;
+        padding-left: @padding-dimension;
+        background-color: @color-tertiary;
+        h1 {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        a {
+            position: absolute;
+            top: 30px;
+            right: @padding-dimension;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: @color-primary;
+            &.link-highlight {
+                color: @color-secondary;
+            }
+            &#dashboard, &#profile {
+                position: unset;
+                margin: 0 15px;
+            }
+        }
+    }
+    div {
+        width: 800px;
+        padding: 5px @padding-dimension @padding-dimension @padding-dimension;
+        margin: 0 auto;
+        margin-top: @margin-dimension;
+        .mixin-card-effect();
+        background-color: @color-tertiary;
+        position: relative;
+        a.button-link {
+            text-decoration: none;
+            padding: 10px @padding-dimension;
+            background-color: @color-secondary;
+            border-radius: @border-radius-dimension;
+            color: @color-tertiary;
+            position: absolute;
+            right: 0;
+            top: 25px;
+            right: @padding-dimension;
+        }
+        p.error {
+            margin-top: 3px;
+            color: @color-danger;
+            font-size: 14px;
+            text-align: left;
+        }
+        p.success {
+            padding: 10px;
+            background-color: @color-green;
+            color: @color-tertiary;
+            border-radius: @border-radius-dimension;
+            text-align: center;
+        }
+        .fail {
+            border: 1px solid @color-danger;
+        }
+        .pass {
+            border: 1px solid @color-gray;
+        }
+        form {
+            width: 322px;
+            p {
+                margin: 0;
+                label {
+                    display: block;
+                    margin-top: 15px;
+                    margin-bottom: 5px;
+                }
+                textarea {
+                    width: 300px;
+                    height: 100px;
+                    padding: 10px;
+                    .mixin-border-input();
+                    resize: none;
+                }
+                input {
+                    display: block;
+                    width: 308px;
+                    height: 30px;
+                    padding-left: 10px;
+                    .mixin-border-input();
+                    &#price {
+                        width: 100px;
+                        text-align: right;
+                    }
+                    &#count {
+                        width: 50px;
+                        text-align: right;
+                    }
+                }
+            }
+            input[type="submit"] {
+                display: block;
+                margin-top: 10px;
+                margin-left: auto;
+                width: 100px;
+                height: 40px;
+                padding: 0;
+                background-color: @color-green;
+                color: @color-tertiary;
+                border-radius: @border-radius-dimension;
+                border: unset;
+            }
+        }
+        fieldset {
+            display: inline-block;
+            width: calc(90%/2);
+            form {
+                width: 100%;
+                input {
+                    width: 96%;
+                }
+            }
+        }
+        fieldset.user-info {
+            margin-right: 10px;
+        }
+        fieldset.user-password {
+            margin-left: 10px;
+        }
+    }
+}

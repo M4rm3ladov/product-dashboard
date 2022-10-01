@@ -1,0 +1,118 @@
+@color-primary: black;
+@color-secondary: #2B78E4;
+@color-tertiary: white;
+@color-gray: #CCCCCC;
+@color-light-gray: #EEEEEE;
+@color-green: #009e0f;
+@color-danger: #cf2a27;
+
+@background-color-input: rgb(247, 247, 247);
+
+@shadow-effect-color: rgba(0, 0, 0, .2);
+@padding-dimension: 20px;
+@margin-dimension: 20px;
+@border-radius-dimension: 5px;
+.mixin-card-effect {
+    box-shadow: 0 4px 8px 0 @shadow-effect-color;
+    border-radius: @border-radius-dimension;
+}
+.mixin-border-input{
+    border-radius: @border-radius-dimension;
+    border-color: @color-gray;
+    border: 1px solid @color-gray;
+    background-color: @background-color-input;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: @color-light-gray;
+    nav { 
+        .mixin-card-effect();
+        border-radius: unset;
+        position: relative;
+        padding-left: @padding-dimension;
+        background-color: @color-tertiary;
+        h1 {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        a {
+            position: absolute;
+            top: 30px;
+            right: @padding-dimension;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: @color-primary;
+            &#dashboard, &#profile {
+                position: unset;
+                margin: 0 15px;
+            }
+            &.selected {
+                color: @color-secondary;    
+            }
+        }
+    }
+    div.container {
+        width: 800px;
+        padding: 5px @padding-dimension @padding-dimension @padding-dimension;
+        margin: 0 auto;
+        margin-top: @margin-dimension;
+        position: relative;
+        .mixin-card-effect();
+        background-color: @color-tertiary;
+        h2 {
+            margin-top: 40px;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: normal;
+        }
+        h3 {
+            display: inline-block;
+            font-size: 18px;
+            span {
+                font-weight: normal;
+            }
+        }
+        p.date-time {
+            display: inline-block;
+            position: absolute;
+            right: @padding-dimension;
+            font-style: italic;
+        }
+        p.error {
+            margin-top: 3px;
+            color: @color-danger;
+            font-size: 14px;
+            text-align: left;
+        }
+        textarea {
+            width: 97%;
+            height: 100px;
+            padding: 10px;
+            .mixin-border-input();
+            resize: none;
+        }
+        div {
+            width: 80%;
+            margin-left: auto;
+            textarea {
+                width: 96.5%;
+                margin-top: @margin-dimension;
+            } 
+        }  
+        input[type="submit"] {
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-bottom: @margin-dimension;
+            width: 100px;
+            height: 40px;
+            padding: 0;
+            background-color: @color-green;
+            color: @color-tertiary;
+            border-radius: @border-radius-dimension;
+            border: unset;
+        }    
+    }
+}
