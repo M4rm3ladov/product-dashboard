@@ -1,5 +1,5 @@
 
-# Product Dashboard mini project built in codeigniter
+# Product Dashboard
 
 A web application built using codeigneter
 ## Technologies
